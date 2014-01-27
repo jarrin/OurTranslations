@@ -1,0 +1,178 @@
+#intro
+{
+	margin: 20px 10%;
+}
+
+#main > .box
+{
+	margin: 40px 10%;
+	box-sizing:border-box;
+	height: 720px;
+	position: relative;
+	
+	
+	background-position: center center;
+}	
+
+		#main > .box p
+		{
+			padding: 20px;
+		}
+		#droptext
+		{
+			width: 100%;
+			text-align: center;
+			position: absolute;
+			bottom: 130px;
+			font-size: 16pt;
+			font-weight: bold;
+
+		}
+
+		#upload-icon
+		{
+			background: url("../images/upload.svg") no-repeat;
+			background-size: 100% 100%;
+			width: 160px;
+			height: 140px;
+			position: absolute;
+			left: 50%;
+			margin-left: -80px;
+			top: 50%;
+			margin-top: -70px;
+		}
+			#droptext .hover
+			{
+				display: none;
+			}
+			table#file-queue
+			{
+				table-layout: fixed;
+			}
+
+				tr.header > th
+				{
+					background: url("../images/bg_dark.png");
+					color: #E4E4E4;
+					font-weight: bold;
+					border-right: 1px solid #E4E4E4;
+					text-align: left;
+				}
+				tr.header > th.file-type{ border-right: none }
+				.file-size, .file-type
+				{
+					padding: 10px;
+					width: 15%;
+				}
+				.file-name
+				{
+					width: 50%;
+					padding: 10px;
+				}
+				.file-state
+				{
+					width: 15%;
+					padding: 10px;
+				}
+				.file-delete
+				{
+					width: 5%;
+					
+				}
+				
+				td.file-name div
+				{
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					display: block;
+				}
+				.file-delete
+				{
+					border-right: none !important;
+				}
+		#counter
+		{
+			width: 100%;
+			text-align: center;
+			font-weight: bold;
+		}
+		#counter > .number
+		{
+			color: green;
+		}
+		#file-queue
+		{	
+			padding: 0;
+			margin: 0;
+			border: 0;
+			display: none;
+			border-spacing: 0;
+			width: 100%;
+			border-bottom: 2px solid #070707;
+		}
+				table#file-queue tr:nth-child(n+10)
+				{
+					display: none !important;
+				}
+				.wrong-file-type td
+				{
+					color: red  !important;
+					font-weight: bold;
+				}
+				#file-queue tr:nth-child(odd) > td
+				{
+					background: url("../images/bg_dark.png");
+					border-right: 1px solid #E4E4E4;
+					color: #E4E4E4;
+				}
+				#file-queue tr:nth-child(even) > td
+				{
+					border-right: 1px solid #0F0F0F;
+				}
+				#file-queue tr > td.file-type{ border-right: none }
+
+				.file-delete { width: 4%; text-align: center; cursor: pointer; }
+
+
+
+		#browse-files{ display: none; }
+		#fake-browse
+		{
+			position: absolute;
+			left: 50%;
+			bottom: 70px;
+			width: 200px;
+			margin-left: -100px;
+		}
+		#process
+		{
+			position: absolute;
+			right: 20px;
+			bottom: 70px;
+			width: 200px;
+		}
+		.box .progress-bar
+		{
+			margin: 10px auto;
+			width: 500px;
+			position: relative;
+			display: none;
+		}
+
+		.box-title.under
+		{
+			position: absolute;
+			bottom: 0;
+		}
+
+
+/*
+	.box
+	{
+		overflow: hidden;
+	}
+	.box:not(.active)
+	{
+		opacity: .2;
+	}*/
