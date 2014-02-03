@@ -18,7 +18,7 @@ var submit =
 			submit.uploadEvents.addQueue($(this).prop("files"));
 		});
 		$("#process").click(submit.uploadEvents.start);
-		submit.sessionID  = submit.getSessionID();
+		submit.getSessionID();
 	},
 	getSessionID: function()
 	{
@@ -26,7 +26,7 @@ var submit =
 			url: 'ajax/submit/getSessionID',
 			success: function(data)
 			{
-				return data.id;
+				submit.sessionID = data.id;
 			}
 		});
 	},
@@ -162,8 +162,6 @@ var submit =
 				var formData = new FormData();  
         		formData.append("file", file);
         		formData.append("sessionID", submit.sessionID); 
-        		formData.append("PHP_SESSION_UPLOAD_PROGRESS", "test"); 
-        		console.log(formData);
 				$.ajax({
 					url: 'ajax/submit/upload',
 					data: formData,
@@ -181,19 +179,17 @@ var submit =
 		},
 		monitorProcces: function()
 		{
-			var c = 0;
 			submit.uploadEvents.processInterval = setInterval(function()
 			{
 				$.ajax({
 					url: 'ajax/submit/uploadProcces',
+					data: { id :  submit.sessionID},
 					success: function(data)
 					{
-						console.log(data);
+						;
 					}
 				});
-				if(c == 4) clearInterval(submit.uploadEvents.processInterval);
-				c++;
-			}, 500);
+			}, 1000);
 		}
 	},
 	processInterval: null,

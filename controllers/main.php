@@ -34,7 +34,7 @@ Class Controller
 		{
 			$this->page = $GET['a'];
 			unset($GET['a']);
-			foreach ($GET as $value) 
+			foreach($GET as $value) 
 			{
 				$this->getData[] = $value;
 			}
@@ -48,8 +48,6 @@ Class Controller
 	{
 		//Load base html template
 		$this->out = file_get_contents(BASE . "views/other/html.php" );
-
-
 
 		//Set view and model files
 		$file_view = BASE . "views/main/" . $this->page . ".html";
@@ -65,8 +63,8 @@ Class Controller
 		}
 
 		//Getting css & js from config.php
-		$jsfiles = array_merge($GLOBALS['c']['js']['default'], $GLOBALS['c']['js'][$this->page]);
-		$cssfiles = array_merge($GLOBALS['c']['css']['default'], $GLOBALS['c']['css'][$this->page]);
+		if(isset($GLOBALS['c']['js'][$this->page]))  $jsfiles = array_merge($GLOBALS['c']['js']['default'], $GLOBALS['c']['js'][$this->page]); else     $jsfiles = $GLOBALS['c']['js']['default'];   
+		if(isset($GLOBALS['c']['css'][$this->page])) $cssfiles = array_merge($GLOBALS['c']['css']['default'], $GLOBALS['c']['css'][$this->page]); else $cssfiles = $GLOBALS['c']['css']['default'];
 
 		//Add those to the header ([js][css])
 		$this->addJS($jsfiles);
@@ -82,39 +80,46 @@ Class Controller
 		if(file_exists($file_model)) require($file_model);
 		
 		//Now replace the body ([body]) in the main html file
-		$this->out = replaceTag("body", $view, $this->out);
-		$this->out = replaceTag("title", $GLOBALS['c']['title'], $this->out);
+		$this->out = tag::replace("body", $view, $this->out);
+		$this->out = tag::replace("title", $GLOBALS['c']['title'], $this->out);
 
 		//procces language tags
-		$this->out = replaceLanguageTags("en", $this->out);
+		$this->out = tag::replaceLanguage("en", $this->out);
 
 		//Procces data that the JS need to know about
-		$this->out = replaceTag("this-page", $this->page, $this->out);
+		$this->out = tag::replace("this-page", $this->page, $this->out);
 
 		//Procces active page
-		$this->out = replaceTag("page-".$this->page, "active", $this->out);
-		$this->out = replaceTagByRegex("page\-(.*?)", "", $this->out);
+		$this->out = tag::replace("page-".$this->page, "active", $this->out);
+		$this->out = tag::replaceByRegex("page\-(.*?)", "", $this->out);
 
+		$this->out = tag::loopLogicalStatements($this->out);
 	}
 
 	private function addJS($arrFiles)
 	{
 		$str = '';
-		foreach ($arrFiles as $value) 
+		if($arrFiles)
 		{
-			$str .= "<script type=\"text/javascript\" src=\"js/". $value ."\" ></script>".PHP_EOL;
+			foreach ($arrFiles as $value) 
+			{
+				$str .= "<script type=\"text/javascript\" src=\"js/". $value ."\" ></script>".PHP_EOL;
+			}
 		}
-		$this->out = replaceTag("js", $str, $this->out);
+		$this->out = tag::replace("js", $str, $this->out);
 
 	}
 	private function addCSS($arrFiles)
 	{
 		$str = '';
-		foreach ($arrFiles as $value) 
+		if($arrFiles)
 		{
-			$str .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/".$value	."\" media=\"screen\">".PHP_EOL;
+			foreach ($arrFiles as $value) 
+			{
+				$str .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/".$value	."\" media=\"screen\">".PHP_EOL;
+			}
 		}
-		$this->out = replaceTag("css", $str, $this->out);
+		$this->out = tag::replace("css", $str, $this->out);
 	}
 
 	public function out()

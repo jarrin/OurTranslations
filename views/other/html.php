@@ -19,7 +19,13 @@
 				<div class="logo" ></div>
 				<div class="text" >[title]</div>
 			</div>
-			<input type="button" id="login_btn" value="[login-or-register]" href="#login" >
+			[if(loggedin)]
+				<div id="points" >
+					[points]
+				</div>
+			[else]
+				<input type="button" id="login_btn" value="[login-or-register]" href="#login" >
+			[/if]
 			<nav>
 				<ul id="navigator">
 					<li data-url="./" class="[page-index]" ><a>[dashboard]<div class="badge" >1233</div></a></li>
@@ -56,7 +62,7 @@
 				<label for="password">[your-password]</label>
 				<input type="password" id="password" required />
 				<input type="submit" value="[login]">
-				<input type="button" value="[signup]">
+				<input type="button" id="login-signup" value="[signup]">
 			</div>
 		</div
 >	</body>

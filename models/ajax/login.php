@@ -24,7 +24,7 @@ switch ($this->getData[0]) {
 			}
 			else
 			{
-				$attempts = (int)$brute_result[0]["attempts"];
+				$attempts = (int)$brute_result[0]["attempts"] + 1;
 				$last_attempt = time() - strtotime($brute_result[0]["date"]); //seconds ago
 				$id = $brute_result[0]["id"];
 				if($last_attempt >= 300) //5 minutes
@@ -32,10 +32,10 @@ switch ($this->getData[0]) {
 					$this->db->update("login_attempts", ["attempts" => 1, "date" => date(MYSQL_DATE)], "id = :id", ["id" => $id]);
 					$attempts = 1;
 				}
-				elseif($attempts < 5) //Give user five tries
+				elseif($attempts <= 5) //Give user five tries
 				{
 
-					$this->db->update("login_attempts", ["attempts" => $attempts+1], "id = :id", ["id" => $id]);
+					$this->db->update("login_attempts", ["attempts" => $attempts], "id = :id", ["id" => $id]);
 				}
 				else $brute_prevent = true; //User did to many tries, time-out of 10 minutes
 			}

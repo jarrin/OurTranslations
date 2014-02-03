@@ -185,7 +185,7 @@ nav
         }
             nav .badge 
             {
-                display: block;
+                display: none;
                 position: absolute;
                 top: -12px;
                 right: 3px;
@@ -227,6 +227,13 @@ nav
     {
         float: right;
         margin: 35px 35px 0 0;
+    }
+    #points 
+    {
+        float: right;
+        margin: 35px 35px 0 0;
+        font-size: 16pt;
+        color: #d9ff26;
     }
 
 #main

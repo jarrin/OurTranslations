@@ -16,16 +16,15 @@ switch ($this->getData[0])
 
 	break;
 	case 'upload':
-
-		var_dump($_SESSION);
-		var_dump($_POST);
 		var_dump($_FILES);
+		var_dump($_POST);
+
 	break;
 	case 'uploadProcces':
-		$key = ini_get("session.upload_progress.prefix") . "test";
-		echo $key;
-		$r = ["p" => $_SESSION['upload_progress_upload']];
-		var_dump($_SESSION);
+		$r = $this->db->run("SELECT cur_status
+							 FROM submit_sessions
+							 WHERE `id` = :id", [":id" => $_POST['id']]);
+		print_r($r);
 	break;
 }
 

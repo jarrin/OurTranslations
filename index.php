@@ -1,4 +1,5 @@
 <?php
+
 require "helpers/functions.php";
 
 $pstart = calcStart();

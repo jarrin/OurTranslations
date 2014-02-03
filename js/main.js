@@ -67,6 +67,7 @@ $(document).ready(function(){
    		e.preventDefault();
    		checkLogin($("#email").val(), $("#password").val())
    	});
+   	$("#login-signup").click(function(){  window.location.href = "./sign-up" });
 });
 function scroll()
 {
@@ -119,10 +120,6 @@ function checkLogin(email, password)
 			else window.location = "./"
 		}
 	});
-}
-function myAccountClick()
-{
-
 }
 (function($) {
 

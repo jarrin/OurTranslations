@@ -1,0 +1,9 @@
+.box.sign-up
+{
+	width: 40%;
+	margin: 40px auto 0;
+}
+	.box.sign-up .content{ margin: 20px; box-sizing:border-box; width: 100%}
+		.box.sign-up form { margin: 0; }
+			.box.sign-up form table{ width: 100%; }
+				.box.sign-up form td input{ width: 100%; }
