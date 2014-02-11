@@ -87,7 +87,7 @@ Class Controller
 		$this->out = tag::replaceLanguage("en", $this->out);
 
 		//Procces data that the JS need to know about
-		$this->out = tag::replace("this-page", $this->page, $this->out);
+		$this->out = tag::replace("this-page", str_replace("-", "_", $this->page), $this->out);
 
 		//Procces active page
 		$this->out = tag::replace("page-".$this->page, "active", $this->out);

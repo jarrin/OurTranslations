@@ -37,6 +37,28 @@ $(window).scroll(function()
 });
 
 $(document).ready(function(){
+	$('[data-tooltip!=""]').qtip({ // Grab all elements with a non-blank data-tooltip attr.
+	    content: {
+	        attr: 'data-tooltip' // Tell qTip2 to look inside this attr for its content
+		},
+		style: {
+	        classes: 'qtip-dark qtip-shadow',
+	        height: "30px"
+	    },
+	    position: {
+	        my: 'left center',  // Position my top left...
+	        at: 'right center',
+	        adjust: {
+	            x: 60
+	        }
+    	},
+    	show: {
+	        event: 'focus'
+	    },
+	    hide: {
+	    	event: 'unfocus'
+	    }
+    })
 	resize();
 	//Bind menu
 	$("#navigator li").each(function()

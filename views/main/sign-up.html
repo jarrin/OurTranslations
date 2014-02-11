@@ -7,10 +7,24 @@
 		<p>[sign-up-intro]</p>
 		<form id="sign-up-form" action="" target="self" >
 			<table>
+				
 				<tr>
 					<td class="label" >[your-name]</td>
-					<td class="label" ><input type="text" name="full-name" /><label for="full-name">Select one</label></td>
+					<td class="input" ><input type="text" name="full-name" data-tooltip="[full-name-surname-or-nick-name]" /></td>
 				</tr>
+				<tr>
+					<td class="label" >[your-email]</td>
+					<td class="input" ><input type="email" name="email" data-tooltip="[full-name-surname-or-nick-name]" /></td>
+				</tr>
+				<tr>
+					<td class="label" >[your-email-again]</td>
+					<td class="input" ><input type="email" name="email-confirm" data-tooltip="[full-name-surname-or-nick-name]" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="confirm" ><input type="button" value="[confirm-email]" /></td>
+				</tr>
+				
+
 			</table>
 		</form>
 	</div>

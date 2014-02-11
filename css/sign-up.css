@@ -7,3 +7,4 @@
 		.box.sign-up form { margin: 0; }
 			.box.sign-up form table{ width: 100%; }
 				.box.sign-up form td input{ width: 100%; }
+					td.confirm { padding: 30px 40px 0; }
